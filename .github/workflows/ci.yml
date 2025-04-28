@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        zig: ["0.14.0"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Zig
+        uses: ehmry/zig-bootstrap@v1
+        with:
+          version: ${{ matrix.zig }}
+      - name: Run Tests
+        run: |
+          zig build test
+      - name: Run Examples
+        run: |
+          zig build run
