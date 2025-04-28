@@ -107,20 +107,11 @@ Follow OpenCage's best practices and query formatting guidelines:
 
 ## Running Examples
 ```bash
-
-# Forward geocoding
-zig build run-forward -- 'Brandenburg Gate'
-
-# Reverse geocoding
-zig build run-reverse -- 52.5162767 13.3777025
-
-# Unicode handling test
-zig build run-unicode
+zig build run
 ```
 ## Testing
 
 ```bash
-
 zig build test
 ```
 
